@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework.Audio;
 
-namespace Painter_monogame
+namespace Painter
 {
     class PaintCan : ThreeColorGameObject
     {

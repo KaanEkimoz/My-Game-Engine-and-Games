@@ -15,6 +15,7 @@ namespace JewelJam
         public int ShapeType { get; private set; }
         public int NumberType { get; private set; }
         public Vector2 TargetPosition { get; set; }
+
         #endregion
 
         /// <summary>

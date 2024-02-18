@@ -66,7 +66,6 @@ namespace PenguinPairs.LevelObjects
                 level.SelectAnimal(this);
             }
         }
-
         public void TryMoveInDirection(Point direction)
         {
             if (!CanMoveInDirection(direction))

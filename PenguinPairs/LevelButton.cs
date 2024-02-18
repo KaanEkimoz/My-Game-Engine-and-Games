@@ -37,14 +37,6 @@ namespace PenguinPairs
             base.Draw(gameTime, spriteBatch);
             label.Draw(gameTime, spriteBatch);
         }
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-            if(Status != LevelStatus.Locked && Pressed)
-            {
-                levelMenuState.LevelButtonClicked(LevelIndex);
-            }
-        }
 
         /// <summary>
         /// Gets or sets the status of this level button.

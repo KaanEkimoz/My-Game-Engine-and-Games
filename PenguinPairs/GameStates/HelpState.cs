@@ -1,13 +1,11 @@
 ﻿using Engine;
 using Engine.UI;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
 
 namespace PenguinPairs.GameStates
 {
     class HelpState : GameState
     {
-        //back button
         Button backButton;
         public HelpState()
         {

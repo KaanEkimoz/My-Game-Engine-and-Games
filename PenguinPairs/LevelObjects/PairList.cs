@@ -33,7 +33,7 @@ namespace PenguinPairs.LevelObjects
             pairObjects[nrPairsMade].SheetIndex = penguinIndex;
             nrPairsMade++;
             if (!Completed)
-                ExtendedGame.AssetManager.PlaySoundEffect("snd_pair");
+                ExtendedGame.AssetManager.PlaySoundEffect("Sounds/snd_pair");
 
         }
         public override void Reset()

@@ -6,8 +6,9 @@ namespace PenguinPairs.GameStates
 {
     class LevelMenuState : GameState
     {
-        //back button
         Button backButton;
+
+        // An array of extra references to the level buttons. 
         LevelButton[] levelButtons;
         public LevelMenuState()
         {
@@ -19,9 +20,8 @@ namespace PenguinPairs.GameStates
             backButton.LocalPosition = new Vector2(415, 720);
             gameObjects.AddChild(backButton);
 
-            int numberOfLevels = PenguinPairs.NumberOfLevels;
+            int numberOfLevels = 12;
             levelButtons = new LevelButton[numberOfLevels];
-
 
             Vector2 gridOffset = new Vector2(155, 230);
             const int buttonsPerRow = 5;
@@ -53,21 +53,21 @@ namespace PenguinPairs.GameStates
             if (backButton.Pressed)
                 ExtendedGame.GameStateManager.SwitchTo(PenguinPairs.StateName_Title);
 
+            // if a (non-locked) level button has been pressed, go to that level
+            foreach (LevelButton button in levelButtons)
+            {
+                if (button.Pressed && button.Status != LevelStatus.Locked)
+                {
+                    // go to the playing state
+                    ExtendedGame.GameStateManager.SwitchTo(PenguinPairs.StateName_Playing);
+
+                    // load the correct level
+                    PlayingState playingState = (PlayingState)ExtendedGame.GameStateManager.GetGameState(PenguinPairs.StateName_Playing);
+                    playingState.LoadLevel(button.LevelIndex);
+
+                    return;
+                }
+            }
         }
-
-        public void LevelButtonClicked(int index)
-        {
-            // go to the playing state
-            ExtendedGame.GameStateManager.SwitchTo(PenguinPairs.StateName_Playing);
-            // TODO: load the level
-            // go to the playing state
-            ExtendedGame.GameStateManager.SwitchTo(PenguinPairs.StateName_Playing);
-
-            // load the correct level
-            PlayingState playingState = (PlayingState)ExtendedGame.GameStateManager.GetGameState(PenguinPairs.StateName_Playing);
-            playingState.LoadLevel(index);
-
-        }
-
     }
 }

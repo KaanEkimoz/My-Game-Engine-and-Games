@@ -1,58 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Input;
 
-namespace Painter_monogame
+namespace Painter
 {
     class GameWorld
     {
+        //Assets
         Texture2D background;
         Texture2D livesSprite;
         Texture2D gameOver;
         Texture2D scoreBar;
         Song backgroundMusic;
+        SpriteFont gameFont;
+        
+        //GameObjects
         PaintCan can1, can2, can3;
         int lives;
-        SpriteFont gameFont;
-
         Cannon cannon;
         Ball ball;
-        /// <summary>
-        /// Creates a new GameWorld instance.
-        /// This method loads all relevant MonoGame assets and initializes all game objects:
-        /// the cannon, the ball, and the paint cans.
-        /// It also initializes all other variables so that the game can start.
-        /// </summary>
-        /// <param name=”Content”>A ContentManager object, required for loading assets.</param>
-        public GameWorld(ContentManager Content)
+        public GameWorld(ContentManager content)
         {
-            background = Content.Load<Texture2D>("spr_background");
-            backgroundMusic = Content.Load<Song>("snd_music");
-            livesSprite = Content.Load<Texture2D>("spr_lives");
-            gameOver = Content.Load<Texture2D>("spr_gameover");
-            scoreBar = Content.Load<Texture2D>("spr_scorebar");
-            gameFont = Content.Load<SpriteFont>("PainterFont");
+            background = content.Load<Texture2D>("spr_background");
+            backgroundMusic = content.Load<Song>("snd_music");
+            livesSprite = content.Load<Texture2D>("spr_lives");
+            gameOver = content.Load<Texture2D>("spr_gameover");
+            scoreBar = content.Load<Texture2D>("spr_scorebar");
+            gameFont = content.Load<SpriteFont>("PainterFont");
             MediaPlayer.Play(backgroundMusic);
 
-            cannon = new Cannon(Content);
-            ball = new Ball(Content);
-            can1 = new PaintCan(Content, 480.0f, Color.Red);
-            can2 = new PaintCan(Content, 610.0f, Color.Green);
-            can3 = new PaintCan(Content, 740.0f, Color.Blue);
+            cannon = new Cannon(content);
+            ball = new Ball(content);
+            can1 = new PaintCan(content, 480.0f, Color.Red);
+            can2 = new PaintCan(content, 610.0f, Color.Green);
+            can3 = new PaintCan(content, 740.0f, Color.Blue);
             lives = 5;
             Score = 0;
         }
         public void Update(GameTime gameTime)
         {
             if(IsGameOver)
-            {
                 return;
-            }
 
             ball.Update(gameTime);
             can1.Update(gameTime);

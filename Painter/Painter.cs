@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using System;
 
-namespace Painter_monogame
+namespace Painter
 {
      class Painter : Game
     {

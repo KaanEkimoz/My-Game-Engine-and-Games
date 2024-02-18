@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Painter_monogame
+namespace Painter
 {
     public static class Program
     {

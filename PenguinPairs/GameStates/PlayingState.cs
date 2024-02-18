@@ -17,12 +17,7 @@ namespace PenguinPairs.GameStates
         {
             SpriteGameObject levelBg = new SpriteGameObject("Sprites/spr_background_level");
             gameObjects.AddChild(levelBg);
-
-            //adding quit button
-            quitButton = new Button("Sprites/UI/spr_button_quit");
-            quitButton.LocalPosition = new Vector2(1058, 20);
-            gameObjects.AddChild(quitButton);
-
+            
             //adding hint button
             hintButton = new Button("Sprites/UI/spr_button_hint");
             hintButton.LocalPosition = new Vector2(916, 20);
@@ -33,6 +28,11 @@ namespace PenguinPairs.GameStates
             retryButton.LocalPosition = new Vector2(916, 20);
             retryButton.Visible = false;
             gameObjects.AddChild(retryButton);
+            
+            //adding quit button
+            quitButton = new Button("Sprites/UI/spr_button_quit");
+            quitButton.LocalPosition = new Vector2(1058, 20);
+            gameObjects.AddChild(quitButton);
 
             //adding level finished overlay
             completedOverlay = new SpriteGameObject("Sprites/spr_level_finished");
@@ -50,17 +50,17 @@ namespace PenguinPairs.GameStates
             }
             else
             {
-                if (quitButton.Pressed)
-                    ExtendedGame.GameStateManager.SwitchTo(PenguinPairs.StateName_LevelSelect);
+                level.HandleInput(inputHelper);
+                
                 // if the "hint" button is pressed, show the hint arrow
                 if (hintButton.Pressed)
                     level.ShowHint();
                 // if the "retry" button is pressed, reset the level
                 if (retryButton.Pressed)
                     level.Reset();
-
-                if (level != null)
-                    level.HandleInput(inputHelper);
+                // if the "quit" button is pressed, go to level select
+                if (quitButton.Pressed)
+                    ExtendedGame.GameStateManager.SwitchTo(PenguinPairs.StateName_Title);
             }
         }
 
@@ -83,12 +83,18 @@ namespace PenguinPairs.GameStates
         public void LoadLevel(int levelIndex)
         {
             level = new Level(levelIndex, "Content/Levels/level" + levelIndex + ".txt");
+
+            // hide the overlay image
+            completedOverlay.Visible = false;
         }
         public void LevelCompleted(int levelIndex)
         {
-            ExtendedGame.AssetManager.PlaySoundEffect("Sounds/snd_won");
-            completedOverlay.Visible = false;
+            
+            completedOverlay.Visible = true;
             level.Visible = false;
+
+            ExtendedGame.AssetManager.PlaySoundEffect("Sounds/snd_won");
+
             PenguinPairs.MarkLevelAsSolved(levelIndex);
         }
 
