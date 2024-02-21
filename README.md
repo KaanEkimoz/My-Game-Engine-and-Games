@@ -1,7 +1,6 @@
 # Game Engine made by C# and MonoGame 
 
-https://github.com/KaanEkimoz/Monogame-Games-and-Engine/assets/79421047/06bd9f89-0fd4-4601-9c4d-cc1a98125a01
-
+https://github.com/KaanEkimoz/My-Game-Engine-and-Games/assets/79421047/efbde7e5-5aa2-4ab0-8ddc-1581fa743386
 
 MonoGame is a simple and powerful .NET framework for creating games for desktop PCs, video game consoles, and mobile devices using the C# programming language.
 
