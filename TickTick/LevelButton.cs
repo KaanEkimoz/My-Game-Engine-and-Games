@@ -1,19 +1,15 @@
 using Engine;
 using Microsoft.Xna.Framework;
 
-namespace TickTick
+class LevelButton : Engine.UI.LevelButton
 {
-    class LevelButton : Engine.UI.LevelButton
+    public LevelButton(int levelIndex, LevelStatus startStatus)
+        : base(levelIndex, startStatus)
     {
-        public LevelButton(int levelIndex, LevelStatus startStatus)
-            : base(levelIndex, startStatus)
-        {
-            // add a label that shows the level index
-            label = new TextGameObject("Fonts/MainFont", 1, Color.White, TextGameObject.Alignment.Right);
-            label.LocalPosition = new Vector2(sprite.Width - 15, 10);
-            label.Parent = this;
-            label.Text = levelIndex.ToString();
-        }
+        // add a label that shows the level index
+        label = new TextGameObject("Fonts/MainFont", 1, Color.White, TextGameObject.Alignment.Right);
+        label.LocalPosition = new Vector2(sprite.Width - 15, 10);
+        label.Parent = this;
+        label.Text = levelIndex.ToString();
     }
 }
-

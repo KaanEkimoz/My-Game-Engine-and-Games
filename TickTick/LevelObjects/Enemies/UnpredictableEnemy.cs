@@ -1,30 +1,29 @@
-﻿using Engine;
+﻿using System;
+using Engine;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace TickTick.LevelObjects.Enemies
+/// <summary>
+/// A variant of PatrollingEnemy that turns around at random moments.
+/// </summary>
+class UnpredictableEnemy : PatrollingEnemy
 {
-    class UnpredictableEnemy : PatrollingEnemy
+    const float minSpeed = 80, maxSpeed = 140;
+    
+    public UnpredictableEnemy(Level level, Vector2 startPosition) 
+        : base(level, startPosition) { }
+
+    public override void Update(GameTime gameTime)
     {
-        const float minSpeed = 80, maxSpeed = 140;
+        base.Update(gameTime);
 
-        public UnpredictableEnemy(Level level, Vector2 startPosition)
-            : base(level, startPosition) { }
-
-        public override void Update(GameTime gameTime)
+        if (waitTime <= 0 && ExtendedGame.Random.NextDouble() <= 0.01)
         {
-            base.Update(gameTime);
+            TurnAround();
 
-            if (waitTime <= 0 && ExtendedGame.Random.NextDouble() <= 0.01)
-            {
-                TurnAround();
-
-                // select a random speed
-                float randomSpeed = minSpeed + (float)ExtendedGame.Random.NextDouble() * (maxSpeed - minSpeed);
-                velocity.X = Math.Sign(velocity.X) * randomSpeed;
-            }
+            // select a random speed
+            float randomSpeed = minSpeed + (float)ExtendedGame.Random.NextDouble() * (maxSpeed - minSpeed);
+            velocity.X = Math.Sign(velocity.X) * randomSpeed;
         }
     }
 }
+
