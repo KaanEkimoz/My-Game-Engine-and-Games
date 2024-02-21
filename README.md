@@ -1,10 +1,5 @@
 # Game Engine made by C# and MonoGame 
-[![Watch the video](https://img.youtube.com/vi/9kpAzcaQ2Nk?si=xg9KRc4Lp1eLUF-2/hqdefault.jpg)](https://www.youtube.com/embed/9kpAzcaQ2Nk?si=xg9KRc4Lp1eLUF-2)
-
-[<img src="https://img.youtube.com/vi/9kpAzcaQ2Nk?si=xg9KRc4Lp1eLUF-2/hqdefault.jpg" width="600" height="300"
-/>](https://www.youtube.com/embed/APOPm01BVrk)
-
-https://youtu.be/
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9kpAzcaQ2Nk?si=0PDpY6ZpnvPw1KRN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 https://github.com/KaanEkimoz/Monogame-Games-and-Engine/assets/79421047/06bd9f89-0fd4-4601-9c4d-cc1a98125a01
 
 
